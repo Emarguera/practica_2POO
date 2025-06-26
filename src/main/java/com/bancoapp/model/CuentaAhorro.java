@@ -4,36 +4,19 @@
  */
 package com.bancoapp.model;
 
+import com.bancoapp.interfaces.Identificable;
+import com.bancoapp.interfaces.Registrable;
+
 import java.util.Objects;
 
 /**
  *
  * @author Emarguera
  */
-public class CuentaAhorro extends CuentaBancaria {
-    private double tasaInteres;
+public class CuentaAhorro extends CuentaBancaria implements Identificable, Registrable {
 
-    public CuentaAhorro(String numeroCuenta, Cliente cliente, double tasaInteres) {
+    public CuentaAhorro(String numeroCuenta, Cliente cliente) {
         super(numeroCuenta, cliente);
-        this.tasaInteres = tasaInteres;
-    }
-
-    public double getTasaInteres() {
-        return tasaInteres;
-    }
-
-    public void setTasaInteres(double tasaInteres) {
-        this.tasaInteres = tasaInteres;
-    }
-
-    @Override
-    public String toString() {
-        return "CuentaAhorro{" +
-                "numeroCuenta='" + getNumeroCuenta() + '\'' +
-                ", saldo=" + getSaldo() +
-                ", cliente=" + getCliente() +
-                ", tasaInteres=" + tasaInteres +
-                '}';
     }
 
     @Override
@@ -42,5 +25,34 @@ public class CuentaAhorro extends CuentaBancaria {
         if (!(obj instanceof CuentaAhorro)) return false;
         CuentaAhorro other = (CuentaAhorro) obj;
         return Objects.equals(this.getNumeroCuenta(), other.getNumeroCuenta());
+    }
+
+    @Override
+    public String toString() {
+        return "CuentaAhorro{" +
+                "numeroCuenta='" + getNumeroCuenta() + '\'' +
+                ", saldo=" + getSaldo() +
+                ", cliente=" + getCliente().getNombre() +
+                '}';
+    }
+
+    @Override
+    public String obtenerIdentificador() {
+        return this.getNumeroCuenta();
+    }
+
+    @Override
+    public void registrar() {
+        System.out.println("Cuenta registrada: " + this);
+    }
+
+    @Override
+    public void eliminar() {
+        System.out.println("Cuenta eliminada: " + this.getNumeroCuenta());
+    }
+
+    @Override
+    public void listar() {
+        System.out.println(this);
     }
 }

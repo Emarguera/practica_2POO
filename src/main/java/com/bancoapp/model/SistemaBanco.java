@@ -4,6 +4,8 @@
  */
 package com.bancoapp.model;
 
+import com.bancoapp.interfaces.Identificable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class SistemaBanco {
 
     public boolean agregarCliente(Cliente cliente) {
         for (Cliente c : clientes) {
-            if (c.getId().equals(cliente.getId())) {
+            if (c.obtenerIdentificador().equals(cliente.obtenerIdentificador())) {
                 return false; // Ya existe
             }
         }
@@ -34,7 +36,7 @@ public class SistemaBanco {
 
     public Cliente buscarCliente(String id) {
         for (Cliente c : clientes) {
-            if (c.getId().equals(id)) {
+            if (c.obtenerIdentificador().equals(id)) {
                 return c;
             }
         }
@@ -58,7 +60,7 @@ public class SistemaBanco {
 
     public boolean agregarCuenta(CuentaAhorro cuenta) {
         for (CuentaAhorro c : cuentas) {
-            if (c.getNumeroCuenta().equals(cuenta.getNumeroCuenta())) {
+            if (c.obtenerIdentificador().equals(cuenta.obtenerIdentificador())) {
                 return false; // Ya existe
             }
         }
@@ -68,7 +70,7 @@ public class SistemaBanco {
 
     public CuentaAhorro buscarCuenta(String numeroCuenta) {
         for (CuentaAhorro c : cuentas) {
-            if (c.getNumeroCuenta().equals(numeroCuenta)) {
+            if (c.obtenerIdentificador().equals(numeroCuenta)) {
                 return c;
             }
         }

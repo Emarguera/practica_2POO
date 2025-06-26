@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author Emarguera
  */
-public abstract class CuentaBancaria {
+public class CuentaBancaria {
     private String numeroCuenta;
     private double saldo;
     private Cliente cliente;
@@ -25,32 +25,23 @@ public abstract class CuentaBancaria {
         return numeroCuenta;
     }
 
-    public double getSaldo() {
-        return saldo;
+    public void setNumeroCuenta(String numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public double getSaldo() {
+        return saldo;
     }
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
-    @Override
-    public String toString() {
-        return "CuentaBancaria{" +
-                "numeroCuenta='" + numeroCuenta + '\'' +
-                ", saldo=" + saldo +
-                ", cliente=" + cliente +
-                '}';
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof CuentaBancaria)) return false;
-        CuentaBancaria other = (CuentaBancaria) obj;
-        return Objects.equals(this.numeroCuenta, other.numeroCuenta);
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }
