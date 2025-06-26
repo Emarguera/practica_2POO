@@ -13,3 +13,4 @@ public interface Registrable {
     void eliminar();
     void listar();
 }
+
